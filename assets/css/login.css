@@ -1,0 +1,42 @@
+
+.login-page .welcome {
+    max-width: 520px;
+    background:
+        radial-gradient(circle at 10% 90%, #e7f2ff 0 7%, transparent 7.5%),
+        var(--paper);
+}
+
+.login-page h1 {
+    color: #8b79b6;
+    font-size: clamp(37px, 7vw, 49px);
+}
+
+.login-page .eyebrow {
+    color: #7ba9c3;
+}
+
+.login-page form {
+    margin-top: 26px;
+}
+
+.login-page .quest-button {
+    width: 100%;
+    margin-top: 12px;
+    background: var(--lavender);
+    border-color: #a294ce;
+    box-shadow: 0 5px 0 #9a8abe;
+    color: #655687;
+}
+
+.login-page .quest-button:hover {
+    background: #e5dcff;
+    box-shadow: 0 8px 0 #9a8abe;
+}
+
+.login-page .quest-button:active {
+    box-shadow: 0 2px 0 #9a8abe;
+}
+
+.login-page .coming-soon {
+    line-height: 2;
+}

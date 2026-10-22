@@ -1,0 +1,69 @@
+
+.home-page .welcome {
+    width: min(100%, 760px);
+    padding: clamp(40px, 7vw, 75px) clamp(25px, 7vw, 65px);
+    background:
+        radial-gradient(circle at 12% 80%, #e8f3d5 0 5%, transparent 5.5%),
+        radial-gradient(circle at 90% 75%, #f8e2e8 0 6%, transparent 6.5%),
+        #fffdf6;
+}
+
+.home-page .welcome::before {
+    content: "☁";
+    top: -43px;
+    left: 7%;
+    font-size: 85px;
+}
+
+.home-page .welcome::after {
+    content: "✧  ✦";
+    top: 15%;
+    right: 7%;
+    font-size: 33px;
+    line-height: 2;
+}
+
+.home-page h1 {
+    margin-top: 22px;
+    color: #e3a83c;
+    font-size: clamp(49px, 10vw, 78px);
+    letter-spacing: -2px;
+    text-shadow:
+        0 4px 0 #f5dba1,
+        2px 6px 0 #e9c9d8;
+}
+
+.home-page .subtitle {
+    max-width: 470px;
+    font-size: 18px;
+}
+
+.home-page .eyebrow {
+    letter-spacing: 4px;
+}
+
+.home-page .status {
+    display: inline-block;
+    max-width: 100%;
+    background: #f7eafa;
+    border-color: #d9c7ec;
+}
+
+.home-page .quest-button {
+    min-width: 225px;
+    font-size: 19px;
+}
+
+.home-page .welcome > p {
+    line-height: 1.7;
+}
+
+@media (max-width: 520px) {
+    .home-page h1 {
+        letter-spacing: -1px;
+    }
+
+    .home-page .quest-button {
+        min-width: 0;
+    }
+}

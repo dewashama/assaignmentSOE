@@ -1,0 +1,107 @@
+
+.puzzle-page .welcome {
+    width: min(100%, 760px);
+    background:
+        radial-gradient(circle at 8% 15%, #fff0c9 0 5%, transparent 5.5%),
+        radial-gradient(circle at 92% 85%, #e4f1d8 0 7%, transparent 7.5%),
+        var(--paper);
+}
+
+.puzzle-page h1 {
+    color: #8c79b4;
+}
+
+.puzzle-page .eyebrow {
+    color: #7eaa7a;
+}
+
+.puzzle-page .points-banner {
+    display: inline-block;
+    margin: 8px 0 18px;
+    padding: 12px 22px;
+    background: #fff0bd;
+    border: 2px dashed #e4bf65;
+    border-radius: 20px;
+    color: #8b6b3c;
+    font-family: 'Fredoka', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.puzzle-page .puzzle-frame {
+    width: min(100%, 460px);
+    margin: 24px auto;
+    padding: 12px;
+    background: #e4f2d9;
+    border: 3px solid white;
+    border-radius: 25px;
+    outline: 2px dashed #a8c99c;
+    outline-offset: -7px;
+    box-shadow: 0 6px 0 #c1d9b3;
+}
+
+.puzzle-page .puzzle-image {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+}
+
+.puzzle-page form {
+    max-width: 360px;
+    margin: 25px auto;
+}
+
+.puzzle-page input[type="number"] {
+    text-align: center;
+    font-size: 21px;
+    font-family: 'Fredoka', sans-serif;
+}
+
+.puzzle-page .quest-button {
+    width: 100%;
+    background: var(--yellow);
+    border-color: #d3a741;
+    box-shadow: 0 5px 0 var(--yellow-dark);
+    color: #7d6334;
+}
+
+.puzzle-page .quest-button:hover {
+    background: #ffe8a0;
+    box-shadow: 0 8px 0 var(--yellow-dark);
+}
+
+.puzzle-page .quest-button:active {
+    box-shadow: 0 2px 0 var(--yellow-dark);
+}
+
+.puzzle-page .message-success {
+    background: #e2f3dc;
+    border-color: #a6ce9c;
+    color: #4d8053;
+}
+
+.puzzle-page .message-error {
+    background: #ffe5e9;
+    border-color: #e8a9ba;
+    color: #a4526a;
+}
+
+.puzzle-page .back-link {
+    display: inline-block;
+    margin-top: 18px;
+}
+
+.puzzle-page .welcome > p {
+    line-height: 1.7;
+}
+
+@media (max-width: 520px) {
+    .puzzle-page .puzzle-frame {
+        padding: 9px;
+    }
+
+    .puzzle-page .points-banner {
+        font-size: 16px;
+    }
+}
