@@ -84,6 +84,10 @@ if (!$user) {
         🍌 Play Puzzle
     </a>
 
+    <a href="pages/profile.php" class="quest-button">
+    👑 My Profile
+</a>
+
     <a href="pages/logout.php" class="quest-button logout-button">
         🌙 Log Out
     </a>

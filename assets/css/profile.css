@@ -1,0 +1,435 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;500;600;700;800&display=swap');
+
+.profile-page {
+    min-height: 100vh;
+    padding: 35px 18px;
+    background:
+        radial-gradient(circle at 10% 10%, #fff4c9 0, transparent 25%),
+        radial-gradient(circle at 90% 20%, #d9efff 0, transparent 28%),
+        linear-gradient(135deg, #fff5dc, #e6f3ff 55%, #f5e5ff);
+    font-family: 'Nunito', sans-serif;
+    color: #62513d;
+}
+
+.profile-container {
+    width: min(100%, 1000px);
+    margin: auto;
+}
+
+.profile-header {
+    text-align: center;
+    margin-bottom: 28px;
+}
+
+.profile-header .back-link {
+    display: block;
+    text-align: left;
+    margin-bottom: 25px;
+}
+
+.profile-header .eyebrow {
+    color: #a17a45;
+    font-weight: 800;
+    letter-spacing: 2px;
+    font-size: 13px;
+}
+
+.profile-header h1 {
+    font-family: 'Fredoka', sans-serif;
+    font-size: clamp(30px, 5vw, 44px);
+    color: #7559a5;
+    margin: 8px 0;
+}
+
+.profile-header > p:last-child {
+    color: #8d806f;
+}
+
+.player-card,
+.streak-card,
+.profile-section {
+    background: rgba(255, 255, 255, .88);
+    border: 2px solid #fff;
+    border-radius: 25px;
+    box-shadow: 0 8px 25px rgba(119, 99, 151, .09);
+    margin-bottom: 22px;
+}
+
+.player-card {
+    padding: 25px;
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    flex-wrap: wrap;
+}
+
+.avatar-circle {
+    width: 88px;
+    height: 88px;
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    background: #fff0bd;
+    border: 3px dashed #e9c66f;
+    border-radius: 50%;
+    font-size: 43px;
+}
+
+.player-info {
+    flex: 1;
+    min-width: 180px;
+}
+
+.player-label {
+    color: #b28a4b;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    margin: 0;
+}
+
+.player-info h2 {
+    font-family: 'Fredoka', sans-serif;
+    color: #765ba5;
+    font-size: 27px;
+    margin: 5px 0;
+}
+
+.player-info p {
+    margin: 4px 0;
+    overflow-wrap: anywhere;
+}
+
+.member-since {
+    color: #9a8c7b;
+    font-size: 13px;
+}
+
+.player-points {
+    min-width: 120px;
+    padding: 15px;
+    text-align: center;
+    background: #fff6d9;
+    border-radius: 19px;
+    color: #8d6a31;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.player-points span {
+    font-size: 22px;
+}
+
+.player-points strong {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 27px;
+}
+
+.player-points small {
+    font-weight: 800;
+}
+
+.streak-card {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 24px;
+    background: linear-gradient(120deg, #fff0d0, #ffe4db);
+    border-color: #fff9eb;
+}
+
+.streak-icon {
+    font-size: 55px;
+    flex-shrink: 0;
+}
+
+.streak-content {
+    flex: 1;
+}
+
+.streak-label {
+    color: #a66e3f;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    margin: 0;
+}
+
+.streak-content h2 {
+    font-family: 'Fredoka', sans-serif;
+    color: #d8754d;
+    font-size: 32px;
+    margin: 4px 0;
+}
+
+.streak-content p {
+    margin: 0;
+    line-height: 1.5;
+}
+
+.streak-record {
+    min-width: 115px;
+    text-align: center;
+    padding: 12px;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, .65);
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.streak-record span {
+    font-size: 23px;
+}
+
+.streak-record strong {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 25px;
+    color: #a86a40;
+}
+
+.streak-record small {
+    font-size: 11px;
+    font-weight: 800;
+}
+
+.streak-reward {
+    background: #eaf6df;
+    border: 2px dashed #b6d69b;
+    border-radius: 17px;
+    padding: 15px;
+    text-align: center;
+    color: #587d48;
+    margin: -7px 0 25px;
+    line-height: 1.5;
+}
+
+.profile-section {
+    padding: 24px;
+}
+
+.profile-section > h2,
+.section-heading h2 {
+    font-family: 'Fredoka', sans-serif;
+    color: #765ba5;
+    font-size: 23px;
+    margin: 0 0 20px;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+}
+
+.stat-card {
+    text-align: center;
+    padding: 18px 8px;
+    border-radius: 19px;
+    background: #f4efff;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.stat-card:nth-child(2) {
+    background: #eff8df;
+}
+
+.stat-card:nth-child(3) {
+    background: #e9f4ff;
+}
+
+.stat-card:nth-child(4) {
+    background: #fff0e7;
+}
+
+.stat-card span {
+    font-size: 27px;
+}
+
+.stat-card strong {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 27px;
+    color: #765ba5;
+}
+
+.stat-card small {
+    font-size: 12px;
+    font-weight: 800;
+    color: #82758f;
+}
+
+.section-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.section-heading span {
+    font-size: 12px;
+    font-weight: 800;
+    color: #9b82bf;
+}
+
+.achievement-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 13px;
+}
+
+.achievement-card {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    padding: 15px;
+    border-radius: 18px;
+    border: 2px solid transparent;
+}
+
+.achievement-card.unlocked {
+    background: #f0f8e8;
+    border-color: #d3e8bd;
+}
+
+.achievement-card.locked {
+    background: #f2f0f4;
+    border-color: #e5e0e9;
+    opacity: .7;
+}
+
+.achievement-icon {
+    font-size: 32px;
+    flex-shrink: 0;
+}
+
+.achievement-card h3 {
+    font-family: 'Fredoka', sans-serif;
+    color: #70578f;
+    margin: 0 0 3px;
+    font-size: 17px;
+}
+
+.achievement-card p {
+    font-size: 12px;
+    margin: 0 0 5px;
+}
+
+.achievement-card small {
+    font-size: 11px;
+    font-weight: 800;
+    color: #8b9a70;
+}
+
+.history-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.history-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    padding: 14px 5px;
+    border-bottom: 1px dashed #e5ddeb;
+}
+
+.history-item:last-child {
+    border-bottom: none;
+}
+
+.history-description {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+}
+
+.history-description strong {
+    color: #68567e;
+    overflow-wrap: anywhere;
+}
+
+.history-description small {
+    font-size: 11px;
+    color: #a397a9;
+}
+
+.points-earned {
+    color: #5f9b55;
+    white-space: nowrap;
+}
+
+.points-spent {
+    color: #d47b70;
+    white-space: nowrap;
+}
+
+.empty-history {
+    color: #9a8b9f;
+    text-align: center;
+    padding: 15px;
+}
+
+.profile-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 13px;
+    padding: 15px 0 30px;
+}
+
+.profile-footer .quest-button {
+    text-decoration: none;
+}
+
+.back-link {
+    color: #8066a6;
+    font-weight: 800;
+    text-decoration: none;
+}
+
+.back-link:hover {
+    color: #ad7a9c;
+}
+
+@media (max-width: 650px) {
+    .player-card {
+        justify-content: center;
+        text-align: center;
+    }
+
+    .player-info {
+        flex-basis: 100%;
+    }
+
+    .player-points {
+        width: 100%;
+    }
+
+    .streak-card {
+        flex-wrap: wrap;
+    }
+
+    .streak-record {
+        width: 100%;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .achievement-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .profile-section {
+        padding: 18px;
+    }
+}
