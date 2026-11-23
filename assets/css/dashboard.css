@@ -1,0 +1,122 @@
+
+.dashboard-page .welcome {
+    width: min(100%, 900px);
+}
+
+.dashboard-page h1 {
+    font-size: clamp(32px, 6vw, 47px);
+    overflow-wrap: anywhere;
+}
+
+.dashboard-page .eyebrow {
+    color: #7ca77b;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 15px;
+    margin: 28px 0;
+}
+
+.stat-card {
+    min-width: 0;
+    padding: 21px 12px;
+    border: 2px solid #fff;
+    border-radius: 23px;
+    outline: 2px dashed #d8c9bb;
+    outline-offset: -6px;
+    box-shadow: 0 5px 0 #e6d7c9;
+}
+
+.stat-card:nth-child(1) {
+    background: #d9effa;
+}
+
+.stat-card:nth-child(2) {
+    background: #fff0c3;
+}
+
+.stat-card:nth-child(3) {
+    background: #f8dce7;
+}
+
+.stat-label {
+    margin: 7px 0 10px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    line-height: 1.5;
+}
+
+.stat-card h2 {
+    margin: 8px 0;
+    font-size: clamp(25px, 4vw, 38px);
+    color: #77658d;
+    overflow-wrap: anywhere;
+}
+
+.stat-small {
+    display: block;
+    font-family: 'Nunito', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.dashboard-page .quest-button {
+    min-width: 190px;
+}
+
+.dashboard-page .quest-button + .quest-button {
+    margin-left: 8px;
+    background: var(--pink);
+    border-color: #cf829c;
+    box-shadow: 0 5px 0 var(--pink-dark);
+    color: #794c61;
+}
+
+.dashboard-page .quest-button + .quest-button:hover {
+    background: #f9cbd7;
+    box-shadow: 0 8px 0 var(--pink-dark);
+}
+
+@media (max-width: 600px) {
+    .stats {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .stat-card {
+        padding: 16px;
+    }
+
+    .dashboard-page .quest-button {
+        width: 100%;
+        margin: 7px 0;
+    }
+
+    .dashboard-page .quest-button + .quest-button {
+        margin-left: 0;
+    }
+}
+
+.dashboard-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
+    margin-top: 24px;
+}
+
+.dashboard-actions .quest-button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    text-align: center;
+}
+
+.logout-button {
+    /* Keeps the same storybook button style for now. */
+}

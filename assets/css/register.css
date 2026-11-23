@@ -1,0 +1,46 @@
+
+.register-page .welcome {
+    max-width: 520px;
+    background:
+        radial-gradient(circle at 90% 12%, #fff0d7 0 6%, transparent 6.5%),
+        var(--paper);
+}
+
+.register-page h1 {
+    color: #c783a0;
+    font-size: clamp(34px, 7vw, 46px);
+}
+
+.register-page .eyebrow {
+    color: #7eaa7a;
+}
+
+.register-page .status {
+    overflow-wrap: anywhere;
+}
+
+.register-page form {
+    margin-top: 25px;
+}
+
+.register-page .quest-button {
+    width: 100%;
+    margin-top: 12px;
+    background: var(--pink);
+    border-color: #cf829c;
+    box-shadow: 0 5px 0 var(--pink-dark);
+    color: #794c61;
+}
+
+.register-page .quest-button:hover {
+    background: #f9cbd7;
+    box-shadow: 0 8px 0 var(--pink-dark);
+}
+
+.register-page .quest-button:active {
+    box-shadow: 0 2px 0 var(--pink-dark);
+}
+
+.register-page .welcome > p:last-child {
+    line-height: 1.8;
+}
