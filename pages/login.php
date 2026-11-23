@@ -1,34 +1,31 @@
-
 <?php
+/**
+ * Login page - uses AuthService (password_verify + session) and a CSRF token.
+ *
+ * AI assistance: structured/rewritten with Claude (Anthropic), Nov 2026 - see docs/AI-ACKNOWLEDGEMENTS.md.
+ */
+
+declare(strict_types=1);
 require_once __DIR__ . '/../backend/config.php';
+
+// Already logged in? Go straight to the dashboard.
+if (!empty($_SESSION['user_id'])) {
+    header('Location: ../dashboard.php');
+    exit;
+}
 
 $error = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $username = trim($_POST['username'] ?? '');
-    $password = $_POST['password'] ?? '';
-
-    if ($username === '' || $password === '') {
-        $error = 'Please enter your username and password.';
+    if (!csrf_valid($_POST['csrf_token'] ?? null)) {
+        $error = 'Invalid form submission. Please try again.';
     } else {
-        $stmt = $pdo->prepare(
-            'SELECT id, username, password_hash
-             FROM users
-             WHERE username = ?'
-        );
-        $stmt->execute([$username]);
-        $user = $stmt->fetch();
+        $auth  = new AuthService($pdo);
+        $error = $auth->login((string) ($_POST['username'] ?? ''), (string) ($_POST['password'] ?? ''));
 
-        if ($user && password_verify($password, $user['password_hash'])) {
-            session_regenerate_id(true);
-
-            $_SESSION['user_id'] = $user['id'];
-            $_SESSION['username'] = $user['username'];
-
+        if ($error === null) {
             header('Location: ../dashboard.php');
             exit;
-        } else {
-            $error = 'Incorrect username or password.';
         }
     }
 }
@@ -49,38 +46,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <p class="subtitle">Your next adventure awaits, traveller.</p>
 
         <?php if ($error !== ''): ?>
-            <p class="status">
-                <?= htmlspecialchars($error, ENT_QUOTES, 'UTF-8') ?>
-            </p>
+            <p class="status"><?= e($error) ?></p>
         <?php endif; ?>
 
         <form method="POST" action="">
+            <?= csrf_field() ?>
             <p>
-                <input
-                    type="text"
-                    name="username"
-                    placeholder="Your username"
-                    autocomplete="username"
-                    required
-                >
+                <input type="text" name="username" placeholder="Your username"
+                       autocomplete="username" required>
             </p>
             <p>
-                <input
-                    type="password"
-                    name="password"
-                    placeholder="Your password"
-                    autocomplete="current-password"
-                    required
-                >
+                <input type="password" name="password" placeholder="Your password"
+                       autocomplete="current-password" required>
             </p>
-            <button type="submit" class="quest-button">
-                Enter the Kingdom
-            </button>
+            <button type="submit" class="quest-button">Enter the Kingdom</button>
         </form>
 
         <p class="coming-soon">
-            New to the kingdom?
-            <a href="register.php">Create an account</a>
+            New to the kingdom? <a href="register.php">Create an account</a>
         </p>
     </main>
 </body>

@@ -1,4 +1,3 @@
-
 <?php
 require_once __DIR__ . '/../backend/config.php';
 
@@ -93,7 +92,10 @@ foreach ($realms as $index => $realm) {
     <nav class="map-nav">
         <a href="../dashboard.php">My Kingdom</a>
         <a href="puzzle.php">Play Puzzle ✨</a>
-        <a href="logout.php">Log Out</a>
+        <form method="POST" action="logout.php" class="inline-form">
+            <?= csrf_field() ?>
+            <button type="submit" class="nav-logout">Log Out</button>
+        </form>
     </nav>
 </header>
 

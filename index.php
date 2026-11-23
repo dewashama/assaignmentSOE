@@ -1,5 +1,5 @@
-
 <?php
+declare(strict_types=1);
 require_once __DIR__ . '/backend/config.php';
 
 $isLoggedIn = isset($_SESSION['user_id']);
@@ -28,16 +28,14 @@ $username = $_SESSION['username'] ?? '';
         <?php if ($isLoggedIn): ?>
             <p class="status">
                 Welcome back,
-                <?= htmlspecialchars($username, ENT_QUOTES, 'UTF-8') ?>!
+                <?= e($username) ?>!
             </p>
 
             <a href="dashboard.php" class="quest-button">
                 Continue Your Adventure
             </a>
 
-            <p class="coming-soon">
-                Your kingdom is waiting for you.
-            </p>
+            <p class="coming-soon">Your kingdom is waiting for you.</p>
         <?php else: ?>
             <p class="status">
                 ✦ Your royal adventure begins here ✦

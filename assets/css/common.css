@@ -244,3 +244,16 @@ input:focus {
         font-size: 15px;
     }
 }
+
+/* Forms that only contain a button (logout) should sit inline like a link/button. */
+.inline-form { display: inline; margin: 0; }
+.nav-logout {
+    background: none;
+    border: 0;
+    padding: 0;
+    font: inherit;
+    font-weight: 800;
+    color: #776447;
+    cursor: pointer;
+}
+.nav-logout:hover { color: #df8b38; }

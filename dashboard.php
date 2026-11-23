@@ -1,36 +1,28 @@
-
 <?php
+/**
+ * Player dashboard: balance, progress and navigation.
+ *
+ * AI assistance: structured/rewritten with Claude (Anthropic), Nov 2026 - see docs/AI-ACKNOWLEDGEMENTS.md.
+ */
+
+declare(strict_types=1);
 require_once __DIR__ . '/backend/config.php';
 
-if (!isset($_SESSION['user_id'])) {
-    header('Location: pages/login.php');
-    exit;
-}
+$userId = require_login('pages/login.php');
 
-$stmt = $pdo->prepare(
-    'SELECT username, star_points
-     FROM users
-     WHERE id = ?'
-);
-$stmt->execute([$_SESSION['user_id']]);
+$stmt = $pdo->prepare('SELECT username FROM users WHERE id = ?');
+$stmt->execute([$userId]);
 $user = $stmt->fetch();
 
-$progressStmt = $pdo->prepare(
-    'SELECT COUNT(*) AS solved_count
-     FROM game_sessions
-     WHERE user_id = ? AND is_solved = 1'
-);
-$progressStmt->execute([$_SESSION['user_id']]);
-$progress = $progressStmt->fetch();
-
-$solvedCount = (int) $progress['solved_count'];
-
-if (!$user) {
-    session_unset();
-    session_destroy();
+if (!$user) { // account was deleted while the session was still active
+    (new AuthService($pdo))->logout();
     header('Location: pages/login.php');
     exit;
 }
+
+$game        = new GameService($pdo, new BananaApiService());
+$points      = $game->getPoints($userId);
+$solvedCount = $game->getSolvedCount($userId);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -44,74 +36,37 @@ if (!$user) {
 <body class="dashboard-page">
     <main class="welcome">
         <p class="eyebrow">WELCOME TO YOUR KINGDOM</p>
-        <h1>
-            Hello, <?= htmlspecialchars($user['username'], ENT_QUOTES, 'UTF-8') ?>!
-        </h1>
-        
-<div class="status">
-    ✨ Your adventure is just beginning! ✨
-</div>
+        <h1>Hello, <?= e($user['username']) ?>!</h1>
 
-<div class="stats">
-    <div class="stat-card">
-        <p class="stat-label">YOUR STAR POINTS</p>
-        <h2><?= (int) $user['star_points'] ?> ✦</h2>
-    </div>
+        <div class="status">✨ Your adventure is just beginning! ✨</div>
 
-    <div class="stat-card">
-        <p class="stat-label">PUZZLES SOLVED</p>
-        <h2><?= $solvedCount ?></h2>
-    </div>
+        <div class="stats">
+            <div class="stat-card">
+                <p class="stat-label">YOUR STAR POINTS</p>
+                <h2><?= $points ?> ✦</h2>
+            </div>
+            <div class="stat-card">
+                <p class="stat-label">PUZZLES SOLVED</p>
+                <h2><?= $solvedCount ?></h2>
+            </div>
+            <div class="stat-card">
+                <p class="stat-label">NEXT MILESTONE</p>
+                <h2><?= 5 - ($solvedCount % 5) ?> <span class="stat-small">to go</span></h2>
+            </div>
+        </div>
 
-    <div class="stat-card">
-        <p class="stat-label">NEXT MILESTONE</p>
-        <h2>
-            <?= 5 - ($solvedCount % 5) ?>
-            <span class="stat-small">to go</span>
-        </h2>
-    </div>
-</div>
+        <p class="subtitle">Your next chapter awaits, brave adventurer! ✨</p>
 
+        <div class="dashboard-actions">
+            <a href="pages/adventure.php" class="quest-button">🗺️ Adventure Map</a>
+            <a href="pages/puzzle.php" class="quest-button">🍌 Play Puzzle</a>
+            <a href="pages/profile.php" class="quest-button">👑 My Profile</a>
 
-<p class="subtitle">Your next chapter awaits, brave adventurer! ✨</p>
-
-<div class="dashboard-actions">
-    <a href="pages/adventure.php" class="quest-button">
-        🗺️ Check Maps
-    </a>
-
-    <a href="pages/puzzle.php" class="quest-button">
-        🍌 Play Puzzle
-    </a>
-
-    <a href="pages/profile.php" class="quest-button">
-    👑 My Profile
-</a>
-
-    <a href="pages/logout.php" class="quest-button logout-button">
-        🌙 Log Out
-    </a>
-</div>
-
-
-
-<p>
-    <a href="pages/adventure.php" class="quest-button">
-        🗺️ Explore the Adventure Map
-    </a>
-</p>
-
-
-<p>
-    <a href="pages/puzzle.php" class="quest-button">
-        Play Puzzle ✨
-    </a>
-</p>
-
-<a href="pages/logout.php" class="quest-button">
-    Log Out
-</a>
-
+            <form method="POST" action="pages/logout.php" class="inline-form">
+                <?= csrf_field() ?>
+                <button type="submit" class="quest-button logout-button">🌙 Log Out</button>
+            </form>
+        </div>
     </main>
 </body>
 </html>

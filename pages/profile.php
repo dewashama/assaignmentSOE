@@ -1,4 +1,3 @@
-
 <?php
 
 require_once __DIR__ . '/../backend/config.php';
@@ -30,7 +29,8 @@ $stmt->execute([$userId]);
 $user = $stmt->fetch();
 
 if (!$user) {
-    header('Location: logout.php');
+    (new AuthService($pdo))->logout();
+    header('Location: login.php');
     exit;
 }
 

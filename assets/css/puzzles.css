@@ -105,3 +105,134 @@
         font-size: 16px;
     }
 }
+
+/* ---- Styles moved out of puzzle.php (difficulty panel, hint/reveal buttons) ---- */
+
+.difficulty-panel {
+    max-width: 520px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 22px;
+    background: #fff8e8;
+    border: 2px dashed #e6c779;
+    color: #76552e;
+}
+
+.difficulty-panel h3 {
+    margin-top: 0;
+}
+
+.difficulty-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.difficulty-form select {
+    width: 100%;
+    padding: 12px;
+    border-radius: 14px;
+    border: 2px solid #e4cf9b;
+    background: white;
+    color: #654b20;
+    font: inherit;
+    cursor: pointer;
+}
+
+.difficulty-panel p {
+    margin: 10px 0 0;
+}
+
+.difficulty-panel strong {
+    color: #8061c9;
+}
+
+.puzzle-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin: 18px 0;
+}
+
+.puzzle-actions form {
+    margin: 0;
+}
+
+.hint-button,
+.reveal-button {
+    border: 2px dashed rgba(115, 85, 48, .35);
+    border-radius: 18px;
+    padding: 12px 18px;
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 0 rgba(90, 65, 35, .12);
+    transition: transform .18s ease, filter .18s ease;
+}
+
+.hint-button {
+    background: #fff0b8;
+    color: #765018;
+}
+
+.reveal-button {
+    background: #e9dcff;
+    color: #573b87;
+}
+
+.hint-button:hover,
+.reveal-button:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.03);
+}
+
+.hint-button:disabled {
+    opacity: .6;
+    cursor: not-allowed;
+}
+
+.hint-box,
+.revealed-box {
+    margin: 16px auto;
+    padding: 14px 18px;
+    max-width: 520px;
+    border-radius: 18px;
+    border: 2px dashed #d6b96b;
+    background: #fff8df;
+    color: #654b20;
+    font-weight: 700;
+}
+
+.revealed-box {
+    background: #f0e8ff;
+    border-color: #bba2e7;
+    color: #573b87;
+}
+
+.action-note {
+    font-size: .92rem;
+    opacity: .85;
+}
+
+.attempt-counter {
+    margin: 14px auto;
+    padding: 12px;
+    max-width: 400px;
+    background: #f0eaff;
+    border-radius: 16px;
+    color: #624c91;
+    font-weight: 700;
+}
+
+.difficulty-locked {
+    color: #927c55;
+    font-size: .9rem;
+}
+
+
+/* JS-driven puzzle page helpers */
+[hidden] { display: none !important; }
+.puzzle-actions button:disabled,
+.quest-button:disabled { opacity: .6; cursor: not-allowed; }

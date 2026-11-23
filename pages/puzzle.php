@@ -45,7 +45,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if (
         !is_string($token) ||
-        !hash_equals($_SESSION['csrf_token'], $token)
+        !
+        -_equals($_SESSION['csrf_token'], $token)
     ) {
         $error = 'Invalid form submission. Please try again.';
 
